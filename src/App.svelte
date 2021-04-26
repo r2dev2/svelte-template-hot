@@ -1,18 +1,20 @@
 <script>
-	import { onMount } from 'svelte'
+  import { onMount } from 'svelte'
 
   export let name
 
-	let counter = 0 // @hmr:keep
+  let counter = 0 // @hmr:keep
 
-	onMount(() => {
-		const interval = setInterval(() => {
-			counter++
-		}, 1000)
-		return () => {
-			clearInterval(interval)
-		}
-	})
+  onMount(() => {
+    const interval = setInterval(() => {
+      counter++
+    }, 1000)
+
+    return () => {
+      clearInterval(interval)
+    }
+  })
+
 </script>
 
 <main>
@@ -21,9 +23,9 @@
     Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to
     learn how to build Svelte apps.
   </p>
-	<p>
-		This page has been open for {counter}s.
-	</p>
+  <p>
+    This page has been open for {counter}s.
+  </p>
 </main>
 
 <style>
