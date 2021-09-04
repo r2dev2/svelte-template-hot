@@ -1,9 +1,9 @@
-import svelte from 'rollup-plugin-svelte-hot'
-import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import livereload from 'rollup-plugin-livereload'
-import { terser } from 'rollup-plugin-terser'
-import hmr from 'rollup-plugin-hot'
+import svelte from 'rollup-plugin-svelte-hot';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import livereload from 'rollup-plugin-livereload';
+import { terser } from 'rollup-plugin-terser';
+import hmr from 'rollup-plugin-hot';
 
 // Set this to true to pass the --single flag to sirv (this serves your
 // index.html for any unmatched route, which is a requirement for SPA
@@ -13,31 +13,32 @@ import hmr from 'rollup-plugin-hot'
 // have to add the --history-api-fallback yourself in your package.json
 // scripts (see: https://github.com/PepsRyuu/nollup/#nollup-options)
 //
-const spa = false
+// eslint-disable-next-line no-unused-vars
+const spa = false;
 
 // NOTE The NOLLUP env variable is picked by various HMR plugins to switch
 // in compat mode. You should not change its name (and set the env variable
 // yourself if you launch nollup with custom comands).
-const isNollup = !!process.env.NOLLUP
-const isWatch = !!process.env.ROLLUP_WATCH
-const isLiveReload = !!process.env.LIVERELOAD
+const isNollup = !!process.env.NOLLUP;
+const isWatch = !!process.env.ROLLUP_WATCH;
+const isLiveReload = !!process.env.LIVERELOAD;
 
-const isDev = isWatch || isLiveReload
-const isProduction = !isDev
+const isDev = isWatch || isLiveReload;
+const isProduction = !isDev;
 
-const isHot = isWatch && !isLiveReload
+const isHot = isWatch && !isLiveReload;
 
 function serve() {
-  let server
+  let server;
 
   function toExit() {
-    if (server) server.kill(0)
+    if (server) server.kill(0);
   }
 
   return {
     name: 'svelte/template:serve',
     writeBundle() {
-      if (server) return
+      if (server) return;
       server = require('child_process').spawn(
         'npm',
         ['run', 'start', '--', '--dev'],
@@ -45,12 +46,12 @@ function serve() {
           stdio: ['ignore', 'inherit', 'inherit'],
           shell: true,
         }
-      )
+      );
 
-      process.on('SIGTERM', toExit)
-      process.on('exit', toExit)
+      process.on('SIGTERM', toExit);
+      process.on('exit', toExit);
     },
-  }
+  };
 }
 
 export default {
@@ -70,7 +71,7 @@ export default {
       // NOTE when hot option is enabled, a blank file will be written to
       // avoid CSS rules conflicting with HMR injected ones
       css: css => {
-        css.write(isNollup ? 'build/bundle.css' : 'bundle.css')
+        css.write(isNollup ? 'build/bundle.css' : 'bundle.css');
       },
       hot: isHot && {
         // Optimistic will try to recover from runtime
@@ -129,4 +130,4 @@ export default {
   watch: {
     clearScreen: false,
   },
-}
+};

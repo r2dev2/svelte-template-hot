@@ -1,19 +1,19 @@
 <script>
-  import { onMount } from 'svelte'
+  import { onMount } from 'svelte';
 
-  export let name
+  export let name;
 
-  let counter = 0 // @hmr:keep
+  let counter = 0; // @hmr:keep
 
   onMount(() => {
     const interval = setInterval(() => {
-      counter++
-    }, 1000)
+      counter++;
+    }, 1000);
 
     return () => {
-      clearInterval(interval)
-    }
-  })
+      clearInterval(interval);
+    };
+  });
 
 </script>
 

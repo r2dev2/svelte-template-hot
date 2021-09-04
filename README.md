@@ -2,6 +2,8 @@
 
 This is a copy of official [Svelte template](https://github.com/sveltejs/template) with added HMR support. It lives at https://github.com/rixo/svelte-template-hot.
 
+This also packages a working eslint configuration and github deploy action (deploys to `gh-pages`).
+
 This template aims to remain as close to the official template as possible. Please refer to official docs for general usage. For HMR specific stuff, see bellow.
 
 **:warning: Experimental :warning:**
@@ -19,21 +21,21 @@ Progress of Svelte HMR support can be tracked in [this issue](https://github.com
 To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
-npx degit rixo/svelte-template-hot svelte-app
+npx degit r2dev2/svelte-template-hot svelte-app
 cd svelte-app
-npm install
+pnpm install
 ```
 
 Run the build script a first time, in order to avoid 404 errors about missing `bundle.css` in the browser:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Quick start
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and... Eyeball!
@@ -51,13 +53,13 @@ Support for both Nollup and Rollup HMR is provided by [rollup-plugin-svelte-hot]
 ### Start HMR server with Nollup
 
 ```bash
-npm run dev:nollup
+pnpm run dev:nollup
 ```
 
 ### Start Rollup with HMR support
 
 ```bash
-npm run dev:rollup
+pnpm run dev:rollup
 ```
 
 ### Start with LiveReload (no HMR)
@@ -65,7 +67,7 @@ npm run dev:rollup
 This is the default `dev` of official template.
 
 ```bash
-npm run dev:livereload
+pnpm run dev:livereload
 ```
 
 ### Start with default method
@@ -73,17 +75,17 @@ npm run dev:livereload
 Nollup HMR is also aliased as `dev` so you can simply run:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 You can change the default `dev` script to your preferred method in the `scripts` section of `package.json`.
 
 **2020-06-29** Nollup has been made the default `dev` script (instead of Rollup) because just released Nollup 0.12.0 fixes support for Svelte sourcemaps and dynamic imports, and Nollup is monstrously fast (especially on the most important metrics, that is rebuild time in big projects)!
 
-The suggested workflow is to use Nollup for dev and enjoy instant feedback loop. If you need a plugin that doesn't work with Nollup, or if you are in a situation that Nollup makes harder to debug (mainly because of it running your code through eval), you can fallback on `npm run dev:rollup` (HMR with rollup-plugin-hot). If you have a bug that you suspect might be caused by HMR or HMR code transform, confirm by turning back to `npm run dev:livereload`.
+The suggested workflow is to use Nollup for dev and enjoy instant feedback loop. If you need a plugin that doesn't work with Nollup, or if you are in a situation that Nollup makes harder to debug (mainly because of it running your code through eval), you can fallback on `pnpm run dev:rollup` (HMR with rollup-plugin-hot). If you have a bug that you suspect might be caused by HMR or HMR code transform, confirm by turning back to `pnpm run dev:livereload`.
 
 ### Build
 
 ```bash
-npm run build
+pnpm run build
 ```
