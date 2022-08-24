@@ -16,6 +16,20 @@ Progress of Svelte HMR support can be tracked in [this issue](https://github.com
 
 **NOTE** This template pins the minor version of Svelte in `package.json`, using the [tilde comparator](https://docs.npmjs.com/misc/semver#tilde-ranges-123-12-1) because, in practice, HMR breakages tend to only happen with new minor versions of Svelte (not patch). And I don't want people to download a hot template with broken HMR... But, in your app, you can change this to your liking -- because you might be more interested in last version of Svelte than stable HMR, or be wise and pin the exact versions of all you dependencies.
 
+## Commands
+
+```bash
+yarn build # build app in production
+yarn dev:livereload # start a dev server that reloads the app whenever a change is made
+yarn dev:nollup # start a dev server that uses hmr to only reload changed portions of app
+yarn dev # alias for yarn dev:nollup
+yarn type:check # type-check your app
+yarn type:check:watch # type-check your app whenever there is a change to source code
+yarn start # serve your app locally
+yarn format # format your app
+yarn format:check # check your app's formatting
+```
+
 ## Installation
 
 To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
@@ -23,19 +37,19 @@ To create a new project based on this template using [degit](https://github.com/
 ```bash
 npx degit r2dev2/svelte-template-hot svelte-app
 cd svelte-app
-pnpm install
+yarn
 ```
 
 Run the build script a first time, in order to avoid 404 errors about missing `bundle.css` in the browser:
 
 ```bash
-pnpm run build
+yarn build
 ```
 
 ## Quick start
 
 ```bash
-pnpm run dev
+yarn dev
 ```
 
 Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and... Eyeball!
@@ -53,13 +67,13 @@ Support for both Nollup and Rollup HMR is provided by [rollup-plugin-svelte-hot]
 ### Start HMR server with Nollup
 
 ```bash
-pnpm run dev:nollup
+yarn dev:nollup
 ```
 
 ### Start Rollup with HMR support
 
 ```bash
-pnpm run dev:rollup
+yarn dev:rollup
 ```
 
 ### Start with LiveReload (no HMR)
@@ -67,7 +81,7 @@ pnpm run dev:rollup
 This is the default `dev` of official template.
 
 ```bash
-pnpm run dev:livereload
+yarn dev:livereload
 ```
 
 ### Start with default method
@@ -75,17 +89,17 @@ pnpm run dev:livereload
 Nollup HMR is also aliased as `dev` so you can simply run:
 
 ```bash
-pnpm run dev
+yarn dev
 ```
 
 You can change the default `dev` script to your preferred method in the `scripts` section of `package.json`.
 
 **2020-06-29** Nollup has been made the default `dev` script (instead of Rollup) because just released Nollup 0.12.0 fixes support for Svelte sourcemaps and dynamic imports, and Nollup is monstrously fast (especially on the most important metrics, that is rebuild time in big projects)!
 
-The suggested workflow is to use Nollup for dev and enjoy instant feedback loop. If you need a plugin that doesn't work with Nollup, or if you are in a situation that Nollup makes harder to debug (mainly because of it running your code through eval), you can fallback on `pnpm run dev:rollup` (HMR with rollup-plugin-hot). If you have a bug that you suspect might be caused by HMR or HMR code transform, confirm by turning back to `pnpm run dev:livereload`.
+The suggested workflow is to use Nollup for dev and enjoy instant feedback loop. If you need a plugin that doesn't work with Nollup, or if you are in a situation that Nollup makes harder to debug (mainly because of it running your code through eval), you can fallback on `yarn dev:rollup` (HMR with rollup-plugin-hot). If you have a bug that you suspect might be caused by HMR or HMR code transform, confirm by turning back to `yarn dev:livereload`.
 
 ### Build
 
 ```bash
-pnpm run build
+yarn build
 ```

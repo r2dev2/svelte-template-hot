@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
 
+  /** @type {string} */
   export let name;
 
   let counter = 0; // @hmr:keep
@@ -14,14 +15,13 @@
       clearInterval(interval);
     };
   });
-
 </script>
 
 <main>
   <h1>Hello {name}!</h1>
   <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to
-    learn how to build Svelte apps.
+    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
+    how to build Svelte apps.
   </p>
   <p>
     This page has been open for {counter}s.

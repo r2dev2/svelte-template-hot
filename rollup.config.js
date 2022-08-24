@@ -5,17 +5,6 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import hmr from 'rollup-plugin-hot';
 
-// Set this to true to pass the --single flag to sirv (this serves your
-// index.html for any unmatched route, which is a requirement for SPA
-// routers using History API / pushState)
-//
-// NOTE This will have no effect when running with Nollup. For Nollup, you'd
-// have to add the --history-api-fallback yourself in your package.json
-// scripts (see: https://github.com/PepsRyuu/nollup/#nollup-options)
-//
-// eslint-disable-next-line no-unused-vars
-const spa = false;
-
 // NOTE The NOLLUP env variable is picked by various HMR plugins to switch
 // in compat mode. You should not change its name (and set the env variable
 // yourself if you launch nollup with custom comands).
@@ -70,7 +59,7 @@ export default {
       // a separate file - better for performance
       // NOTE when hot option is enabled, a blank file will be written to
       // avoid CSS rules conflicting with HMR injected ones
-      css: css => {
+      css: (css) => {
         css.write(isNollup ? 'build/bundle.css' : 'bundle.css');
       },
       hot: isHot && {
