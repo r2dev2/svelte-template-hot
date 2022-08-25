@@ -40,7 +40,7 @@
     "type:check": "svelte-check --tsconfig tsconfig.json",
     "type:check:watch": "svelte-check --watch --tsconfig tsconfig.json",
     "start": "sirv public",
-    "format": "eslint --cache --fix .",
-    "format:check": "eslint --cache ."
+    "format": "eslint --cache --fix src",
+    "format:check": "eslint --cache src"
   }
 }
