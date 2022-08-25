@@ -22,6 +22,7 @@ Progress of Svelte HMR support can be tracked in [this issue](https://github.com
 yarn build # build app in production
 yarn dev:livereload # start a dev server that reloads the app whenever a change is made
 yarn dev:nollup # start a dev server that uses hmr to only reload changed portions of app
+yarn dev:lan # start a livereload server and make it accessible on local network (useful for running on phone)
 yarn dev # alias for yarn dev:nollup
 yarn type:check # type-check your app
 yarn type:check:watch # type-check your app whenever there is a change to source code
